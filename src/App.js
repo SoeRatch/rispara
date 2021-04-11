@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {Switch,Route} from "react-router-dom"
+import indexRoutes from "./routes"
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = ({location}) => (
+  <React.Fragment>
+<div>
+    this is a header
+  </div>
+  <Switch>
+      {
+        indexRoutes.map((prop,key)=>{
+            return <Route exact path = {prop.path} component = {prop.component} key ={key} />;
+        })
+      }
+  </Switch>
+
+  <div>
+    this is a footer
+  </div>
+
+  </React.Fragment>
+
+  
+)
 
 export default App;
